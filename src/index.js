@@ -1,8 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './index.css'
+
+import Task from './components/task';
+import TaskFilter from './components/taskFilter';
+
+import AppHeader from './components/app-header';
+import TaskList from './components/taskList';
+import Footer from './components/footer';
+import NewTaskForm from './components/newTaskForm';
+
+
+
+const App = () => { 
+  const todoData = [
+    {label : 'Completed Task', status: "completed", id:1},
+    {label : 'Active Task', status: "editing", id:2},   
+    {label : 'Active Task', status: "active", id:3},   
+  ];
+
+ return (
+ <div className='todoapp'>
+  <AppHeader/>
+  <NewTaskForm/>  
+  <TaskList todos = {todoData} />
+  {/* <Footer />   */}
+
+</div>)
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,7 +36,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
