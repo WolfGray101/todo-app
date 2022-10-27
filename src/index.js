@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'
 
-import Task from './components/task';
-import TaskFilter from './components/taskFilter';
+
 
 import AppHeader from './components/app-header';
 import TaskList from './components/taskList';
@@ -24,7 +23,7 @@ const App = () => {
   <AppHeader/>
   <NewTaskForm/>  
   <TaskList todos = {todoData} />
-  {/* <Footer />   */}
+  <Footer />
 
 </div>)
 };

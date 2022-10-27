@@ -5,10 +5,10 @@ const NewTaskForm = () => {
     fontSize: '20px'
   }
   return (
-  <div className="header">
+  
     <input className="new-todo"
   style = {searchStyle}
-  placeholder = {searchText}/>
-  </div>)
+  placeholder = {searchText}/>)
+
 }
 export default NewTaskForm

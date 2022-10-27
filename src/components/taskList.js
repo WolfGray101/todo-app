@@ -7,19 +7,10 @@ const TaskList =( { todos } ) => {
  
   const elements = todos.map((item) => {
     
-    const { id, status, ... itemProps} = item;
+    const {...itemProps} = item;
    
-    return (
-      <li key = {id} className =  { status }>
-        <div className="view">
-        <input className="toggle" type="checkbox"></input>
-        <label>          
-        <Task { ... itemProps} />
-        </label>
-        <button className="icon icon-edit"></button>
-        <button className="icon icon-destroy"></button>
-        </div>
-      </li>
+    return (        
+        <Task {... itemProps} />        
     )
       });
 
