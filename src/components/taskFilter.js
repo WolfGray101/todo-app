@@ -4,34 +4,56 @@ import '../index.css';
 
 
 export default class TaskFilter extends Component {
-  render () {
+  
+  render () { 
+    // const {onComplited, onActive} = this.props  
+   
+
+    let activeButtonClassName = ""
     return (    
       <ul className="filters">
               <li>
-                <button className="selected">All</button>
+                <button                  
+                  className={activeButtonClassName}>
+         
+                    All
+                </button>
               </li>
               <li>
-                <button>Active</button>
+                <button  
+                  className={activeButtonClassName}>
+            
+                    Active
+                </button>
               </li>
               <li>
-                <button>Completed</button>
+                <button  
+                  className={activeButtonClassName}>
+           
+                    Completed
+                </button>
               </li>
       </ul> 
     )
   }
 }
 
-// const TaskFilter = () => {
+// const TaskFilter = ({onComplited, onActive}) => {
 //   return (    
-//     <ul class="filters">
+//     <ul className="filters">
 //             <li>
-//               <button class="selected">All</button>
+//               <button className="selected">All</button>
 //             </li>
 //             <li>
-//               <button>Active</button>
+//               <button
+//               onClick={onActive}>
+//                 Active</button>
 //             </li>
 //             <li>
-//               <button>Completed</button>
+//               <button
+//               onClick = { onComplited }>
+//                 Completed
+//                 </button>
 //             </li>
 //     </ul> 
 //   )

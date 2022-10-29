@@ -35,7 +35,8 @@ export default  class Task extends React.Component {
           {label}          
           </span>
           </label>
-          <button className="icon icon-edit"></button>
+          <button className="icon icon-edit">            
+          </button>
           <button className="icon icon-destroy" 
           onClick= {onDeleted}>            
           </button>

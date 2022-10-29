@@ -8,17 +8,18 @@ export default class ItemAdd extends Component {
   }
   onLabelChange = (e) => {
     this.setState ( { 
-      label: e.target.value
+     label: e.target.value
     })
-    console.log(e.target.value);
   }
 
   onSubmit = (e) => {
     e.preventDefault()
+    if (this.state.label) {
     this.props.onItemAdd(this.state.label)
     this.setState({
       label: ''
     })
+  } else alert('String is empty')
   }
           
     render () {      
@@ -29,9 +30,6 @@ export default class ItemAdd extends Component {
               placeholder="Type to create Task"
               onChange = {this.onLabelChange}
               value = {this.state.label}></input>  
-            {/* <button className="headerButton">   
-             ADD TEXT         
-            </button> */}
             </form> 
       )
     }
