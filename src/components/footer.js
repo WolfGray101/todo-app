@@ -4,7 +4,7 @@ import TaskFilter from './taskFilter'
 import '../index.css';
 
 // const Footer =( {onComplited, onActive, onAll} ) => { 
-  const Footer =( { onActive, doneCount} ) => { 
+  const Footer =( { onActive, doneCount, filter, onFilterChange} ) => { 
     return (
       <footer className = "footer">
        <span className = "todo-count"> 
@@ -13,7 +13,8 @@ import '../index.css';
        <TaskFilter 
               // onComplited =  {onComplited}
               // onActive =  {onActive}
-              // onAll =  {onAll}
+             filter = {filter}
+             onFilterChange = {onFilterChange}
      /> 
        <button 
        className = "clear-completed"

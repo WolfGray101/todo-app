@@ -3,7 +3,6 @@ import React from "react";
 import '../index.css';
 
 
-// нет других  функций кроме render/ можем отрефакторить назад в функцию а не в класс..
 export default  class Task extends React.Component {
 
   // state = {

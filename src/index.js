@@ -12,9 +12,9 @@ class App extends Component {
   maxID = 100;
   state = {
         todoData : [ ],
-        filter: 'active', //active, all, done
+        term: '',
+        filter: 'all', //active, all, done
         };
-
 
   deleteTask = (id) => {
     this.setState( ( { todoData } ) => {
@@ -27,18 +27,18 @@ class App extends Component {
     })
   }
 
-  // filter (items, filter) {
-  //       switch(filter) {
-  //         case 'all' :
-  //           return items;
-  //         case 'active':
-  //           return items.filter( (item) => !item.done);
-  //         case 'done': 
-  //           return items.filter( (item) => item.done); 
-  //         default :
-  //           return items
-  //       }
-  // }
+  filter(items, filter) {
+        switch(filter) {
+          case 'all' :
+            return items;
+          case 'active':
+            return items.filter( (item) => !item.done);
+          case 'done': 
+            return items.filter( (item) => item.done); 
+          default :
+            return items
+        }
+  }
 
   complited = () => {    
       this.setState( ( { todoData} ) => {
@@ -99,13 +99,26 @@ class App extends Component {
   })  
  }
 
+  onFilterChange = (filter) => {
+    this.setState({filter})
+  }
+
+// search(items, term) {
+
+//   if (term.length === 0) { return items}
+//   return items.filter((item) => {
+//         return item.label.indexOf(term)>-1
+//   })
+// }
 
 
 
  render () {
-  const {todoData, term, filter} = this.state
+  const {todoData, filter} = this.state
+  //  const visibleItems = this.search(todoData,term)
   // // const visibleItems = this.filter(
   // //     this.search(todoData,term), filter)
+  const visibleItems = this.filter(todoData, filter)
   const doneCount = todoData.filter((el) => !el.done).length 
   return (
   <div className='todoapp'>
@@ -115,14 +128,15 @@ class App extends Component {
     onItemAdd = {this.addTask }
   />
   <TaskList 
-    todos = {todoData}
+    todos = {visibleItems}
     onDeleted = {this.deleteTask}
     onToggleDone = {this.onToggleDone}
   />
   <Footer 
     doneCount = {doneCount}
-    // onComplited = {this.complited} 
+    filter = {filter} 
     onActive = {this.active} 
+    onFilterChange = {this.onFilterChange}
   />
    
 </div>
