@@ -16,6 +16,9 @@ export default class ItemAdd extends Component {
   onSubmit = (e) => {
     e.preventDefault()
     this.props.onItemAdd(this.state.label)
+    this.setState({
+      label: ''
+    })
   }
           
     render () {      
@@ -24,10 +27,11 @@ export default class ItemAdd extends Component {
               <input type ='Text'
               className="new-todo"
               placeholder="Type to create Task"
-              onChange = {this.onLabelChange}></input>  
-            <button className="headerButton">   
+              onChange = {this.onLabelChange}
+              value = {this.state.label}></input>  
+            {/* <button className="headerButton">   
              ADD TEXT         
-            </button>
+            </button> */}
             </form> 
       )
     }

@@ -76,7 +76,7 @@ class App extends Component {
   return (
   <div className='todoapp'>
   <AppHeader/>
-  <NewTaskForm />
+  {/* <NewTaskForm /> */}
   <ItemAdd onItemAdd = {this.addTask }
 />
   <TaskList 
