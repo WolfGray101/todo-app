@@ -25,7 +25,8 @@ export default class TaskFilter extends Component {
        </button>
     </li>
     )
-  })    
+  }) 
+     
   return (
     <ul className="filters">
     {buttons}
@@ -33,25 +34,3 @@ export default class TaskFilter extends Component {
   )
   }
 }
-
-// const TaskFilter = ({onComplited, onActive}) => {
-//   return (    
-//     <ul className="filters">
-//             <li>
-//               <button className="selected">All</button>
-//             </li>
-//             <li>
-//               <button
-//               onClick={onActive}>
-//                 Active</button>
-//             </li>
-//             <li>
-//               <button
-//               onClick = { onComplited }>
-//                 Completed
-//                 </button>
-//             </li>
-//     </ul> 
-//   )
-// }
-// export default TaskFilter

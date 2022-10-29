@@ -10,7 +10,8 @@ const TaskList =( { todos, onDeleted, onToggleDone } ) => {
     const {id, ...itemProps } = item;
    
     return (        
-        <Task   
+        <Task  
+        key = {id} 
         { ... itemProps}
         onDeleted = { () => onDeleted(id)}
         onToggleDone = { () => onToggleDone(id)} 

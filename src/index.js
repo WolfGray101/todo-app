@@ -13,8 +13,8 @@ class App extends Component {
   state = {
         todoData : [ ],
         term: '',
-        filter: 'all', //active, all, done
-        };
+        filter: 'all', 
+       };
 
   deleteTask = (id) => {
     this.setState( ( { todoData } ) => {
@@ -103,21 +103,9 @@ class App extends Component {
     this.setState({filter})
   }
 
-// search(items, term) {
-
-//   if (term.length === 0) { return items}
-//   return items.filter((item) => {
-//         return item.label.indexOf(term)>-1
-//   })
-// }
-
-
-
  render () {
   const {todoData, filter} = this.state
-  //  const visibleItems = this.search(todoData,term)
-  // // const visibleItems = this.filter(
-  // //     this.search(todoData,term), filter)
+
   const visibleItems = this.filter(todoData, filter)
   const doneCount = todoData.filter((el) => !el.done).length 
   return (
