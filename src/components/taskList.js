@@ -1,23 +1,21 @@
-import React from "react"
-
+import React  from "react"
 import Task from './task'
 import '../index.css';
 
-const TaskList =( { todos, onDeleted, onToggleDone } ) => {
- 
+const TaskList =( { todos, onDeleted, onToggleDone, onEditTaskLabel } ) => {
+
   const elements = todos.map((item) => {
-    
-    const {id, ...itemProps } = item;
-   
+  const {id, ...itemProps } = item;
     return (        
-        <Task  
-        key = {id} 
+        <Task key = {id}        
         { ... itemProps}
         onDeleted = { () => onDeleted(id)}
         onToggleDone = { () => onToggleDone(id)} 
+        onEditTaskLabel = {(text) => onEditTaskLabel(id, text)}
         />        
     )
       });
+      
 
     return (
       <div className = "main">
@@ -27,7 +25,5 @@ const TaskList =( { todos, onDeleted, onToggleDone } ) => {
       </div>
   )
 }
-
- 
 
 export default TaskList

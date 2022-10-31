@@ -40,40 +40,38 @@ class App extends Component {
         }
   }
 
-  complited = () => {    
-      this.setState( ( { todoData} ) => {
-        const arrComplited = todoData.filter((el) => el.done === true)
-        return {todoData: arrComplited}
-      })  
-     }
+  // complited = () => {    
+  //     this.setState( ( { todoData} ) => {
+  //       const arrComplited = todoData.filter((el) => el.done === true)
+  //       return {todoData: arrComplited}
+  //     })  
+  //    }
 
-  active = () => {     
-        this.setState( ( { todoData} ) => {
-          const arrActive = todoData.filter((el) => el.done === false)
-          return {todoData: arrActive}
-        })  
-       }
-  all = () => {     
-    this.setState( ( { todoData} ) => {
-    const arr = todoData.filter((el) => el.done === false)
-    return {todoData: arr}
-    })  
-  }
+  // active = () => {     
+  //       this.setState( ( { todoData} ) => {
+  //         const arrActive = todoData.filter((el) => el.done === false)
+  //         return {todoData: arrActive}
+  //       })  
+  //      }
+  // all = () => {     
+  //   this.setState( ( { todoData} ) => {
+  //   const arr = todoData.filter((el) => el.done === false)
+  //   return {todoData: arr}
+  //   })  
+  // }
 
   createTodoItem = (label) => {  
     return {    
     label: label,
     done: false,
-    id: this.maxID++
+    id: this.maxID++,
    }
   }
 
   addTask = (text) => {
     const newItem = this.createTodoItem (text)
     this.setState( ({ todoData} ) => {
-    const newArray = [
-      ...todoData, newItem      
-    ]
+    const newArray = [...todoData, newItem ]
     return {
       todoData: newArray
       }
@@ -82,9 +80,7 @@ class App extends Component {
 
   onToggleDone = (id) => {
     this.setState( ( { todoData} ) => {
-
     const ind = todoData.findIndex( (el) => el.id === id );
-
     // 1. update Object
     const oldItem = todoData[ind];
     const newItem = {...oldItem, 
@@ -92,17 +88,34 @@ class App extends Component {
     // 2. construct new array
     const newArray = [
       ...todoData.slice(0, ind),
-      newItem,
+        newItem,
       ...todoData.slice(ind+1)
     ];
     return {todoData: newArray}
   })  
  }
+ editTaskLabel = (id, text) => {
+  this.setState( ( { todoData} ) => {
+  const ind = todoData.findIndex( (el) => el.id === id );
+  // 1. update Object
+  const oldItem = todoData[ind];
+  const newItem = {...oldItem, 
+  label: text}
+  // 2. construct new array
+  const newArray = [
+    ...todoData.slice(0, ind),
+      newItem,
+    ...todoData.slice(ind+1)
+  ];
+  return {todoData: newArray}
+})  
+}
 
   onFilterChange = (filter) => {
     this.setState({filter})
   }
 
+  
  render () {
   const {todoData, filter} = this.state
 
@@ -119,6 +132,8 @@ class App extends Component {
     todos = {visibleItems}
     onDeleted = {this.deleteTask}
     onToggleDone = {this.onToggleDone}
+    onItemAdd = {this.addTask}
+    onEditTaskLabel = {this.editTaskLabel}
   />
   <Footer 
     doneCount = {doneCount}
