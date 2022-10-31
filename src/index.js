@@ -47,12 +47,12 @@ class App extends Component {
   //     })  
   //    }
 
-  // active = () => {     
-  //       this.setState( ( { todoData} ) => {
-  //         const arrActive = todoData.filter((el) => el.done === false)
-  //         return {todoData: arrActive}
-  //       })  
-  //      }
+  active = () => {     
+        this.setState( ( { todoData} ) => {
+          const arrActive = todoData.filter((el) => el.done === false)
+          return {todoData: arrActive}
+        })  
+       }
   // all = () => {     
   //   this.setState( ( { todoData} ) => {
   //   const arr = todoData.filter((el) => el.done === false)
@@ -65,6 +65,7 @@ class App extends Component {
     label: label,
     done: false,
     id: this.maxID++,
+    date: new Date()
    }
   }
 

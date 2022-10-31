@@ -1,5 +1,7 @@
 import React from "react";
 import '../index.css';
+import { formatDistance, subDays } from 'date-fns'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 export default  class Task extends React.Component {
  
@@ -33,7 +35,7 @@ export default  class Task extends React.Component {
   }
 
   render () {
-    const {onDeleted, onToggleDone, label, done}  = this.props
+    const {onDeleted, onToggleDone, label, done, date}  = this.props
    
       let newClassName = ""
       let isEditing = this.state.vis;
@@ -54,7 +56,11 @@ export default  class Task extends React.Component {
               <label>          
                 <span className = 'description'
                     onClick = { onToggleDone}>
-                    {label}          
+                    {label}  
+                    </span>
+                    <span className="created">
+{ formatDistanceToNow(date,
+ { addSuffix: true, includeSeconds: true })}
                 </span>
               </label>
             <button 
